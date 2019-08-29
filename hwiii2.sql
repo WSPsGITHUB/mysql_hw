@@ -278,10 +278,8 @@ create procedure deleteOD10(
     in pNum varchar(10)
 )
 begin
-    select oNum, pNum;
     delete from `訂單細項` where `商品編號` = pNum  and `訂單編號` = oNum;
     select count(*) into @count from `訂單細項` where `訂單編號` = oNum;
-    select @count;
     if @count = 0 then  delete from `訂單` where `訂單編號` = oNum;
     end if;
 end #
